@@ -64,7 +64,7 @@ app.add_middleware(AuditMiddleware)
 # Updated CORS middleware to use allow_origin_regex for dynamic origin matching
 app.add_middleware(
     CORSMiddleware,
-    # allow_origin_regex=r"https://.*\.vercel\.app",  # Allow all Vercel frontend deployments
+    allow_origin_regex=r"https://.*\.vercel\.app",  # Allow all Vercel frontend deployments
     allow_origins=["http://localhost:5173", "http://localhost:5174"],
     allow_credentials=True,
     allow_methods=["*"],
