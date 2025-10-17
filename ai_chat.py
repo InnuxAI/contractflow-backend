@@ -479,9 +479,9 @@ async def check_compliance(query: ComplianceQuery):
         
         # Step 1: Determine document domain using Gemini
         domain_prompt = f"""
-        You are a legal document analyzer. Based on the following document excerpt, determine the most likely domain or category of this document.
-        Choose from the following domains: Pharmaceutical, Legal, Finance, HR, IT, Procurement, Sales, Marketing, or Other.
-        
+        You are a Contract document analyzer. Based on the following document excerpt, determine the most likely domain or category of this document.
+        Choose from the following domains: Pharmaceutical, Legal, Finance, HR, Technology, Procurement, Sales, Marketing, or Other.
+        Please note that every document is Legal but that dosent mean its domain is Legal. Focus on the primary purpose or industry context of the document. If unsure, choose Other.
         Document:
         {document_sample}
         
@@ -638,15 +638,15 @@ async def check_compliance(query: ComplianceQuery):
         
         Format your response as:
         <div class="compliance-summary">
-        <h3>Compliance Summary</h3>
+        <h4>Compliance Summary</h4>
         <table class="compliance-table" style="border-collapse: collapse; width: 100%; border: 1px solid #ddd;">
-        <thead><tr style="background-color: #f5f5f5;"><th style="border: 1px solid #ddd; padding: 8px;">Clause</th><th style="border: 1px solid #ddd; padding: 8px;">Risk Level</th><th style="border: 1px solid #ddd; padding: 8px;">Status</th></tr></thead>
+        <thead><tr style="background-color: #000000;"><th style="border: 1px solid #ddd; padding: 8px;">Clause</th><th style="border: 1px solid #ddd; padding: 8px;">Risk Level</th><th style="border: 1px solid #ddd; padding: 8px;">Status</th></tr></thead>
         <tbody>
         [Table rows for each clause with appropriate color classes and id attributes]
         </tbody>
         </table>
         
-        <h3>Analysis & Recommendations</h3>
+        <h4>Analysis & Recommendations</h4>
         <p>[Your analysis here with specific recommendations for each clause]</p>
         </div>
         """
