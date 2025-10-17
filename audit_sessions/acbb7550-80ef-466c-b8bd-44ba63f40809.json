@@ -1,0 +1,272 @@
+{
+  "session_id": "acbb7550-80ef-466c-b8bd-44ba63f40809",
+  "user_id": "940d53e2-97f5-41c0-8b16-f3e565190041",
+  "user_email": "reviewer@example.com",
+  "session_start_time": "2025-08-28T12:43:15.805561+00:00",
+  "session_end_time": null,
+  "events": [
+    {
+      "event_id": "b1b9d804-2970-44b7-af73-70a3028a0f99",
+      "timestamp": "2025-08-28T12:43:15.806069+00:00",
+      "event_type": "session.start",
+      "actor": {
+        "user_id": "940d53e2-97f5-41c0-8b16-f3e565190041",
+        "user_email": "reviewer@example.com",
+        "actor_type": "user"
+      },
+      "target": {
+        "object_type": "session",
+        "object_id": "acbb7550-80ef-466c-b8bd-44ba63f40809"
+      },
+      "outcome": {
+        "status": "success",
+        "code": "SESSION_STARTED"
+      },
+      "details": {
+        "session_meta": {
+          "login_method": "password",
+          "user_role": "reviewer",
+          "ip": "127.0.0.1",
+          "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+        }
+      },
+      "request_meta": {
+        "request_id": "3c019458-5fb0-4274-a1c6-cc79f04f2c4c",
+        "session_id": "acbb7550-80ef-466c-b8bd-44ba63f40809"
+      }
+    },
+    {
+      "event_id": "60528361-5833-4518-8c9d-9ce8747bc049",
+      "timestamp": "2025-08-28T12:43:15.807080+00:00",
+      "event_type": "user.token.issued",
+      "actor": {
+        "user_id": "940d53e2-97f5-41c0-8b16-f3e565190041",
+        "user_email": "reviewer@example.com",
+        "actor_type": "user"
+      },
+      "target": {
+        "object_type": "token",
+        "object_id": "f046f76839c26133"
+      },
+      "outcome": {
+        "status": "success",
+        "code": "TOKEN_ISSUED"
+      },
+      "details": {
+        "token_fingerprint": "[REDACTED]",
+        "expires_in_minutes": 30,
+        "user_role": "reviewer"
+      },
+      "request_meta": {
+        "request_id": "940d53e2-97f5-41c0-8b16-f3e565190041_token",
+        "session_id": "acbb7550-80ef-466c-b8bd-44ba63f40809"
+      }
+    },
+    {
+      "event_id": "2f14bb0c-9c4c-40f2-a6fa-d1131817241f",
+      "timestamp": "2025-08-28T12:43:36.093258+00:00",
+      "event_type": "document.open",
+      "actor": {
+        "user_id": "940d53e2-97f5-41c0-8b16-f3e565190041",
+        "actor_type": "user"
+      },
+      "target": {
+        "object_type": "document",
+        "object_id": "d0dcfe1c-c82f-4bcb-8092-c4461386768b",
+        "object_name": "SERVICE AGREEMENT.sfdt"
+      },
+      "outcome": {
+        "status": "success",
+        "code": "DOCUMENT_ACCESSED"
+      },
+      "details": {
+        "access_type": "read"
+      },
+      "request_meta": {
+        "request_id": "doc_access_d0dcfe1c-c82f-4bcb-8092-c4461386768b",
+        "session_id": "acbb7550-80ef-466c-b8bd-44ba63f40809",
+        "ip": "127.0.0.1"
+      }
+    },
+    {
+      "event_id": "c88bcbca-2284-484b-8ddd-c4ca9d1c0c59",
+      "timestamp": "2025-08-28T12:43:40.680615+00:00",
+      "event_type": "document.open",
+      "actor": {
+        "user_id": "940d53e2-97f5-41c0-8b16-f3e565190041",
+        "actor_type": "user"
+      },
+      "target": {
+        "object_type": "document",
+        "object_id": "1303d318-07f3-4f9c-adbc-b2f4bf9b0e1c",
+        "object_name": "Contract.sfdt"
+      },
+      "outcome": {
+        "status": "success",
+        "code": "DOCUMENT_ACCESSED"
+      },
+      "details": {
+        "access_type": "read"
+      },
+      "request_meta": {
+        "request_id": "doc_access_1303d318-07f3-4f9c-adbc-b2f4bf9b0e1c",
+        "session_id": "acbb7550-80ef-466c-b8bd-44ba63f40809",
+        "ip": "127.0.0.1"
+      }
+    },
+    {
+      "event_id": "284caafa-a203-4f0b-a0fc-f24b83f1794f",
+      "timestamp": "2025-08-28T12:43:42.277101+00:00",
+      "event_type": "document.open",
+      "actor": {
+        "user_id": "940d53e2-97f5-41c0-8b16-f3e565190041",
+        "actor_type": "user"
+      },
+      "target": {
+        "object_type": "document",
+        "object_id": "d0dcfe1c-c82f-4bcb-8092-c4461386768b",
+        "object_name": "SERVICE AGREEMENT.sfdt"
+      },
+      "outcome": {
+        "status": "success",
+        "code": "DOCUMENT_ACCESSED"
+      },
+      "details": {
+        "access_type": "read"
+      },
+      "request_meta": {
+        "request_id": "doc_access_d0dcfe1c-c82f-4bcb-8092-c4461386768b",
+        "session_id": "acbb7550-80ef-466c-b8bd-44ba63f40809",
+        "ip": "127.0.0.1"
+      }
+    },
+    {
+      "event_id": "a2c3ba9f-1630-4f87-bad7-e00812873287",
+      "timestamp": "2025-08-28T12:44:02.776899+00:00",
+      "event_type": "document.open",
+      "actor": {
+        "user_id": "940d53e2-97f5-41c0-8b16-f3e565190041",
+        "actor_type": "user"
+      },
+      "target": {
+        "object_type": "document",
+        "object_id": "d0dcfe1c-c82f-4bcb-8092-c4461386768b",
+        "object_name": "SERVICE AGREEMENT.sfdt"
+      },
+      "outcome": {
+        "status": "success",
+        "code": "DOCUMENT_ACCESSED"
+      },
+      "details": {
+        "access_type": "read"
+      },
+      "request_meta": {
+        "request_id": "doc_access_d0dcfe1c-c82f-4bcb-8092-c4461386768b",
+        "session_id": "acbb7550-80ef-466c-b8bd-44ba63f40809",
+        "ip": "127.0.0.1"
+      }
+    },
+    {
+      "event_id": "b30dcc0e-f3b5-49a2-a2ce-7c7052af2abc",
+      "timestamp": "2025-08-28T12:44:02.993054+00:00",
+      "event_type": "document.open",
+      "actor": {
+        "user_id": "940d53e2-97f5-41c0-8b16-f3e565190041",
+        "actor_type": "user"
+      },
+      "target": {
+        "object_type": "document",
+        "object_id": "d0dcfe1c-c82f-4bcb-8092-c4461386768b",
+        "object_name": "SERVICE AGREEMENT.sfdt"
+      },
+      "outcome": {
+        "status": "success",
+        "code": "DOCUMENT_ACCESSED"
+      },
+      "details": {
+        "access_type": "read"
+      },
+      "request_meta": {
+        "request_id": "doc_access_d0dcfe1c-c82f-4bcb-8092-c4461386768b",
+        "session_id": "acbb7550-80ef-466c-b8bd-44ba63f40809",
+        "ip": "127.0.0.1"
+      }
+    },
+    {
+      "event_id": "1ebed6e7-8e82-4b01-b256-c26f69c5a603",
+      "timestamp": "2025-08-28T12:44:03.062857+00:00",
+      "event_type": "document.open",
+      "actor": {
+        "user_id": "940d53e2-97f5-41c0-8b16-f3e565190041",
+        "actor_type": "user"
+      },
+      "target": {
+        "object_type": "document",
+        "object_id": "d0dcfe1c-c82f-4bcb-8092-c4461386768b",
+        "object_name": "SERVICE AGREEMENT.sfdt"
+      },
+      "outcome": {
+        "status": "success",
+        "code": "DOCUMENT_ACCESSED"
+      },
+      "details": {
+        "access_type": "read"
+      },
+      "request_meta": {
+        "request_id": "doc_access_d0dcfe1c-c82f-4bcb-8092-c4461386768b",
+        "session_id": "acbb7550-80ef-466c-b8bd-44ba63f40809",
+        "ip": "127.0.0.1"
+      }
+    },
+    {
+      "event_id": "4cbff741-f6ce-4af6-96e1-473ea9c7be3a",
+      "timestamp": "2025-08-28T12:44:23.784591+00:00",
+      "event_type": "document.open",
+      "actor": {
+        "user_id": "940d53e2-97f5-41c0-8b16-f3e565190041",
+        "actor_type": "user"
+      },
+      "target": {
+        "object_type": "document",
+        "object_id": "d0dcfe1c-c82f-4bcb-8092-c4461386768b",
+        "object_name": "SERVICE AGREEMENT.sfdt"
+      },
+      "outcome": {
+        "status": "success",
+        "code": "DOCUMENT_ACCESSED"
+      },
+      "details": {
+        "access_type": "read"
+      },
+      "request_meta": {
+        "request_id": "doc_access_d0dcfe1c-c82f-4bcb-8092-c4461386768b",
+        "session_id": "acbb7550-80ef-466c-b8bd-44ba63f40809",
+        "ip": "127.0.0.1"
+      }
+    },
+    {
+      "event_id": "77eb9e6d-9d09-46d6-a142-eebbfd397fe7",
+      "timestamp": "2025-08-28T12:44:23.846929+00:00",
+      "event_type": "document.assign_approver",
+      "actor": {
+        "user_id": "940d53e2-97f5-41c0-8b16-f3e565190041",
+        "user_email": "reviewer@example.com",
+        "actor_type": "user",
+        "ip_address": null
+      },
+      "target": {
+        "object_type": "document",
+        "object_id": "d0dcfe1c-c82f-4bcb-8092-c4461386768b",
+        "object_name": null
+      },
+      "outcome": {
+        "status": "success",
+        "code": "ASSIGNED_TO_APPROVERS",
+        "message": null,
+        "error_details": null
+      },
+      "details": {
+        "changes_summary": null,
+        "notes": null
+      },
+      "request_meta": 
