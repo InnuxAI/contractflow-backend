@@ -640,7 +640,7 @@ async def check_compliance(query: ComplianceQuery):
         <div class="compliance-summary">
         <h4>Compliance Summary</h4>
         <table class="compliance-table" style="border-collapse: collapse; width: 100%; border: 1px solid #ddd;">
-        <thead><tr style="background-color: #000000;"><th style="border: 1px solid #ddd; padding: 8px;">Clause</th><th style="border: 1px solid #ddd; padding: 8px;">Risk Level</th><th style="border: 1px solid #ddd; padding: 8px;">Status</th></tr></thead>
+        <thead><tr style="background-color: #1c1c1c;"><th style="border: 1px solid #ddd; padding: 8px;">Clause</th><th style="border: 1px solid #ddd; padding: 8px;">Risk Level</th><th style="border: 1px solid #ddd; padding: 8px;">Status</th></tr></thead>
         <tbody>
         [Table rows for each clause with appropriate color classes and id attributes]
         </tbody>

@@ -394,9 +394,9 @@ async def get_document(
                 user_id=str(current_user["_id"]),
                 user_email=current_user.get("email"),
                 actor_type=ActorType.USER
-            ),
-            target=Target(object_type=ObjectType.DOCUMENT, object_id=document_id),
-            outcome=Outcome(status=OutcomeStatus.SUCCESS, code="STATUS_UPDATED"),
+            ).dict(),
+            target=Target(object_type=ObjectType.DOCUMENT, object_id=document_id).dict(),
+            outcome=Outcome(status=OutcomeStatus.SUCCESS, code="STATUS_UPDATED").dict(),
             details={
                 "status_from": document["status"],
                 "status_to": DocumentStatus.WITH_REVIEWER,
@@ -429,10 +429,17 @@ async def update_document_status(
         
         # If reviewer is marking changes as complete
         if update.status == DocumentStatus.WITH_APPROVER:
+            # Check if document has approvers
+            if not document.get("approvers") or len(document["approvers"]) == 0:
+                raise HTTPException(
+                    status_code=400, 
+                    detail="Cannot send to approver: No approvers assigned to this document. Please assign at least one approver first."
+                )
+            
             update_data = {
                 "status": DocumentStatus.WITH_APPROVER,
-                "changes_summary": update.changes_summary,
-                "notes": update.notes
+                "changes_summary": update.changes_summary or "Document ready for approval",
+                "notes": update.notes or "Document sent to approver"
             }
             
             # Log document approval assignment
@@ -443,12 +450,13 @@ async def update_document_status(
                     user_id=str(current_user["_id"]),
                     user_email=current_user.get("email"),
                     actor_type=ActorType.USER
-                ),
-                target=Target(object_type=ObjectType.DOCUMENT, object_id=document_id),
-                outcome=Outcome(status=OutcomeStatus.SUCCESS, code="ASSIGNED_TO_APPROVERS"),
+                ).dict(),
+                target=Target(object_type=ObjectType.DOCUMENT, object_id=document_id).dict(),
+                outcome=Outcome(status=OutcomeStatus.SUCCESS, code="ASSIGNED_TO_APPROVERS").dict(),
                 details={
                     "changes_summary": update.changes_summary,
-                    "notes": update.notes
+                    "notes": update.notes,
+                    "approvers_count": len(document["approvers"])
                 },
                 request_meta=request_meta
             )
@@ -456,23 +464,24 @@ async def update_document_status(
             # Notify approvers (in a real system, this would send emails/notifications)
             for approver_id in document["approvers"]:
                 approver = get_user_by_id(approver_id)
-                print(f"Notifying approver {approver['email']} that changes are ready for review")
-                
-                # Log notification sent
-                log_session_event(
-                    session_id=session_id,
-                    event_type=EventType.EMAIL_SENT,
-                    actor=Actor(actor_type=ActorType.SYSTEM),
-                    target=Target(object_type=ObjectType.EMAIL, object_id=f"notify_{approver_id}"),
-                    outcome=Outcome(status=OutcomeStatus.SUCCESS, code="APPROVAL_NOTIFICATION_SENT"),
-                    details={
-                        "recipient_id": approver_id,
-                        "recipient_email": approver["email"],
-                        "document_id": document_id,
-                        "notification_type": "approval_required"
-                    },
-                    request_meta=request_meta
-                )
+                if approver:
+                    print(f"Notifying approver {approver['email']} that changes are ready for review")
+                    
+                    # Log notification sent
+                    log_session_event(
+                        session_id=session_id,
+                        event_type=EventType.EMAIL_SENT,
+                        actor=Actor(actor_type=ActorType.SYSTEM).dict(),
+                        target=Target(object_type=ObjectType.EMAIL, object_id=f"notify_{approver_id}").dict(),
+                        outcome=Outcome(status=OutcomeStatus.SUCCESS, code="APPROVAL_NOTIFICATION_SENT").dict(),
+                        details={
+                            "recipient_id": approver_id,
+                            "recipient_email": approver["email"],
+                            "document_id": document_id,
+                            "notification_type": "approval_required"
+                        },
+                        request_meta=request_meta
+                    )
         else:
             update_data = update.dict(exclude_unset=True)
     else:  # approver
@@ -488,13 +497,13 @@ async def update_document_status(
                     user_id=str(current_user["_id"]),
                     user_email=current_user.get("email"),
                     actor_type=ActorType.USER
-                ),
+                ).dict(),
                 target=Target(
                     object_type=ObjectType.DOCUMENT, 
                     object_id=document_id,
                     object_name=document.get("title")
-                ),
-                outcome=Outcome(status=OutcomeStatus.SUCCESS, code="DOCUMENT_APPROVED"),
+                ).dict(),
+                outcome=Outcome(status=OutcomeStatus.SUCCESS, code="DOCUMENT_APPROVED").dict(),
                 details={
                     "document_title": document.get("title"),
                     "final_approval": True
@@ -515,13 +524,13 @@ async def update_document_status(
                     user_id=str(current_user["_id"]),
                     user_email=current_user.get("email"),
                     actor_type=ActorType.USER
-                ),
+                ).dict(),
                 target=Target(
                     object_type=ObjectType.DOCUMENT,
                     object_id=document_id,
                     object_name=document.get("title")
-                ),
-                outcome=Outcome(status=OutcomeStatus.SUCCESS, code="DOCUMENT_REJECTED"),
+                ).dict(),
+                outcome=Outcome(status=OutcomeStatus.SUCCESS, code="DOCUMENT_REJECTED").dict(),
                 details={
                     "reason": update.notes,
                     "rejection_notes": update.notes
@@ -552,9 +561,9 @@ async def update_document_status(
                 user_id=str(current_user["_id"]),
                 user_email=current_user.get("email"),
                 actor_type=ActorType.USER
-            ),
-            target=Target(object_type=ObjectType.DOCUMENT, object_id=document_id),
-            outcome=Outcome(status=OutcomeStatus.SUCCESS, code="STATUS_CHANGED"),
+            ).dict(),
+            target=Target(object_type=ObjectType.DOCUMENT, object_id=document_id).dict(),
+            outcome=Outcome(status=OutcomeStatus.SUCCESS, code="STATUS_CHANGED").dict(),
             details={
                 "status_from": previous_status,
                 "status_to": update_data["status"],
